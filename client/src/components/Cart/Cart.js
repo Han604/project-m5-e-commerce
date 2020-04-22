@@ -52,7 +52,7 @@ const Cart = () => {
         </ItemHeader>
 
         {Object.values(products).map((product) => (
-          <CartItem key={product.id} product={product} products={products} />
+          <CartItem key={product._id} product={product} products={products} />
         ))}
       </ItemList>
 

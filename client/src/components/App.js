@@ -34,14 +34,17 @@ function App() {
       .then((res) => res.json())
       .then((data) => dispatch(receiveAllProducts(data)))
       .catch((err) => dispatch(receiveProductsError()));
+  }, []);
 
-    // Fetches all the companies
+  useEffect(()=> {
+        // Fetches all the companies
+        console.log('ding')
     dispatch(requestAllCompanies());
     fetch('/companies')
       .then((res) => res.json())
       .then((data) => dispatch(receiveAllCompanies(data)))
       .catch((err) => dispatch(receiveCompaniesError()));
-  }, []);
+  },[])
 
   return (
     <Router>

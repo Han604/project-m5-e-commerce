@@ -14,6 +14,7 @@ export default function companiesReducer(state = initialState, action) {
     }
 
     case 'RECEIVE_ALL_COMPANIES': {
+      console.log(action, 'companies')
       return {
         ...state,
         companies: action.companies,

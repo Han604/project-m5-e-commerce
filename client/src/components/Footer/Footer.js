@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const state = useSelector((state) => state);
-  console.log(state);
   return (
     <div style={{ width: '80%', margin: '0 auto' }}>
       <WrapperDiv>

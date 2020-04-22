@@ -14,9 +14,9 @@ const ProductsList = ({ products }) => {
       {state.status === 'idle' && state.status !== 'error'
         ? Object.values(products).map((product) => {
             return (
-              <PlaceholderItem key={product.id} to={`/product/${product.id}`}>
+              <PlaceholderItem key={product._id} to={`/product/${product._id}`}>
                 <ProductPicture
-                  key={product.id}
+                  key={product._id}
                   src={product.imageSrc}
                   alt={product.name}
                 ></ProductPicture>

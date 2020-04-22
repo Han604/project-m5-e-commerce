@@ -20,6 +20,8 @@ const ItemDetail = () => {
   const productArray = useSelector((state) => state.products.products);
   const companyArray = useSelector((state) => state.companies.companies);
 
+  // console.log(companyArray)
+
   // checking to see if all products have been fetched
   const productStatus = useSelector((state) => state.products.status);
 
@@ -30,10 +32,10 @@ const ItemDetail = () => {
   // setting the company state using the product's companyId. runs only when the product state updates.
   React.useEffect(() => {
     if (product !== null) {
-      const idChecker = productArray.map((obj) => obj.id === parseInt(id));
+      const idChecker = productArray.map((obj) => obj._id === parseInt(id));
       console.log(idChecker);
       if (idChecker.includes(true)) {
-        let compObj = companyArray.find((obj) => obj.id === product.companyId);
+        let compObj = companyArray.find((obj) => obj._id === product.companyId);
         setCompany(compObj);
       } else {
         console.log('bacon');
@@ -45,7 +47,7 @@ const ItemDetail = () => {
   // setting the product state using using id parameter. runs only when productStatus changes
   React.useEffect(() => {
     if (productStatus === 'idle') {
-      let prodObj = productArray.find((obj) => obj.id === parseInt(id));
+      let prodObj = productArray.find((obj) => obj._id === parseInt(id));
       setProduct(prodObj);
     }
   }, [productStatus, id]);
@@ -121,13 +123,13 @@ const ItemDetail = () => {
                   <AddToCart
                     onClick={() => {
                       let findProduct = Object.values(cart).find(
-                        (item) => item.id === product.id
+                        (item) => item._id === product._id
                       );
                       // If the product is already in the cart it will only increase the quantity of it else add to the cart
                       if (findProduct !== undefined) {
                         dispatch(
                           updateQuantityAlreadyInCart(
-                            findProduct.id,
+                            findProduct._id,
                             findProduct.quantity
                           )
                         );
@@ -145,7 +147,7 @@ const ItemDetail = () => {
                 {relatedArray.length > 0 ? (
                   relatedArray.map((p) => {
                     return (
-                      <RelatedItem key={p.id} to={`/product/${p.id}`}>
+                      <RelatedItem key={p._id} to={`/product/${p._id}`}>
                         <img src={p.imageSrc} />
                       </RelatedItem>
                     );

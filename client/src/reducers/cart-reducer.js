@@ -5,10 +5,10 @@ export default function cartReducer(state = initialState, action) {
     case 'ADD_PRODUCT': {
       return {
         ...state,
-        [action.product.id]: {
+        [action.product._id]: {
           ...action.product,
           quantity:
-            state[action.product.id] && state[action.product.quantity]
+            state[action.product._id] && state[action.product.quantity]
               ? state[action.product.quantity] + 1
               : 1,
         },

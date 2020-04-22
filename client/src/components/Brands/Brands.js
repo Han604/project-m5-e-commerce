@@ -55,16 +55,16 @@ const Brands = ({ companies }) => {
         return (
           <Brand
             isSelected={
-              company.id === parseInt(window.localStorage.getItem('brand'))
+              company._id === parseInt(window.localStorage.getItem('brand'))
             }
             onClick={(e) => {
               window.localStorage.setItem('brand', e.target.id);
               getProductsByBrands();
             }}
-            id={company.id}
-            key={company.id}
+            id={company._id}
+            key={company._id}
           >
-            {company.id === parseInt(window.localStorage.getItem('brand')) &&
+            {company._id === parseInt(window.localStorage.getItem('brand')) &&
               '+ '}
             {company.name}
           </Brand>

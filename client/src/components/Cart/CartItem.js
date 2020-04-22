@@ -6,12 +6,12 @@ import { updateQuantity, removeProduct } from '../../actions';
 
 const CartItem = ({ product }) => {
   const productQuantity = useSelector(
-    (state) => state.cart[product.id].quantity
+    (state) => state.cart[product._id].quantity
   );
   const subtotal = useSelector((state) => {
-    let newPrice = state.cart[product.id].price;
+    let newPrice = state.cart[product._id].price;
     newPrice = newPrice.split('$')[1];
-    return state.cart[product.id].quantity * Number(newPrice);
+    return state.cart[product._id].quantity * Number(newPrice);
   });
 
   const dispatch = useDispatch();
